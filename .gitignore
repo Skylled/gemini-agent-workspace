@@ -1,0 +1,9 @@
+# Don't commit any secrets or local config
+.env
+*.key
+
+# Docker build cache
+.docker/
+
+# Other junk
+.DS_Store

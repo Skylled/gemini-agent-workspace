@@ -1,0 +1,62 @@
+# ============================================================================
+# Gemini Agent Workspace — Docker Compose
+# ============================================================================
+# Docker Compose is a friendlier way to manage containers. Instead of
+# typing long `docker run` commands with lots of flags, you define
+# everything here and just run `docker compose up`.
+# ============================================================================
+
+services:
+  agent:
+    # Build the image from the Dockerfile in this same directory
+    build: .
+
+    # Give the container a memorable name (instead of a random one)
+    container_name: gemini-agent
+
+    # "unless-stopped" means the container will restart automatically
+    # if Docker restarts (e.g., after a reboot), but NOT if you
+    # manually stop it with `docker compose down`.
+    restart: unless-stopped
+
+    # --- Volumes (persistent storage) ---
+    # Volumes are how data survives when a container is destroyed/rebuilt.
+    # Think of them as external hard drives plugged into the container.
+    volumes:
+      # Your main workspace — projects, notes, soul.md, etc.
+      # Maps the named volume "agent-workspace" to /home/agent/workspace
+      - agent-workspace:/home/agent/workspace
+
+      # Gemini CLI config — auth tokens, settings, etc.
+      # This means you only need to log in once.
+      - agent-gemini-config:/home/agent/.gemini
+
+    # --- Resource limits (optional, uncomment if needed) ---
+    # Prevents the agent from consuming your entire machine's resources.
+    deploy:
+      resources:
+        limits:
+          cpus: "4.0"       # Max 4 CPU cores
+          memory: 6G        # Max 6GB RAM
+
+    # --- Networking ---
+    # By default, the container has internet access.
+    # To disable it, uncomment the next two lines:
+    # networks:
+    #   - no-internet
+
+# --- Named volumes ---
+# These are managed by Docker and persist independently of the container.
+# Even if you delete and recreate the container, these volumes remain.
+# To see them: docker volume ls
+# To inspect: docker volume inspect gemini-agent-workspace_agent-workspace
+volumes:
+  agent-workspace:
+  agent-gemini-config:
+
+# --- Network config for air-gapped mode (optional) ---
+# Uncomment this block AND the network lines above to disable internet.
+# networks:
+#   no-internet:
+#     driver: bridge
+#     internal: true   # <-- this is what blocks internet access
