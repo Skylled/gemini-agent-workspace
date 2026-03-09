@@ -39,6 +39,7 @@ RUN apt-get update && apt-get install -y \
     apt-transport-https \
     ca-certificates \
     gnupg \
+    nano \
     && rm -rf /var/lib/apt/lists/*
     # ↑ Clean up the package cache to keep the image small
 
