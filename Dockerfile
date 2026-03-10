@@ -77,9 +77,10 @@ ENV PATH="/opt/dart-sdk/bin:$PATH"
 # Install globally via npm. The `-g` flag makes it available everywhere.
 RUN npm install -g @google/gemini-cli
 
-# ---- Enable 256 colors ----
-# Gemini CLI complains about not having 256 colors. This fixes that error.
+# ---- Enable 256 & true colors ----
+# Gemini CLI complains about not having 256 or true colors. This fixes the errors
 ENV TERM=xterm-256color
+ENV COLORTERM=truecolor
 
 # ---- AgentMail setup ----
 # Gives the agent an inbox to manage
