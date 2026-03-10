@@ -81,6 +81,10 @@ RUN npm install -g @google/gemini-cli
 # Gemini CLI complains about not having 256 colors. This fixes that error.
 ENV TERM=xterm-256color
 
+# ---- AgentMail setup ----
+# Gives the agent an inbox to manage
+RUN npm install -g agentmail-cli
+
 # ---- Create a non-root user ----
 # Running as root inside a container is bad practice.
 # We create a user called "agent" with sudo access (just in case).

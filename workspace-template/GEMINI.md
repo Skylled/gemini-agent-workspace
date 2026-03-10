@@ -11,6 +11,8 @@ At the start of every session:
 1. Read `soul.md` to understand your identity and how to behave.
 2. Read `memory.md` to recall context from previous sessions.
 3. Briefly orient yourself: check what projects/files exist in the workspace.
+4. Use the `agentmail-cli` skill to check your inbox. Use at least one turn
+   for each incoming email.
 
 ## Memory
 
@@ -18,10 +20,10 @@ You have a file called `memory.md` in this workspace as well as a `memory/`
 folder. Use it to maintain continuity between sessions:
 
 - **At the end of a session** (or when the user says goodbye), create a new
-  file in `memory/` (or append if already existing) in the format of 
-  `YYYY-MM-DD.md` with a medium-length summary of what was accomplished,
-  decisions made, and open threads. Then append `memory.md` with a one-line
-  summary of the contents of the new memory entry.
+  file in `memory/` in the format of `YYYY-MM-DD-HH.md` with a medium-length
+  summary of what was accomplished, decisions made, and open threads. Then
+  append `memory.md` with a one-line summary of the contents of the new memory
+  entry.
 - **Format entries** with a date and a concise summary.
 - **Use the summaries** to know which memory files to check for potentially
   relevant details to a given query or task.
@@ -34,7 +36,9 @@ folder. Use it to maintain continuity between sessions:
 ├── soul.md          ← Your identity and personality
 ├── GEMINI.md        ← This file (your instructions)
 ├── memory.md        ← Summaries of past sessions
+├── skills.md        ← Summary list of skills available in the skills folder
 ├── memory/          ← More detailed logs of sessions
+├── skills/          ← Information about individual "Skills" you may need
 └── projects/        ← Your working projects go here
 ```
 

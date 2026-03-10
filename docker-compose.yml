@@ -14,6 +14,10 @@ services:
     # Give the container a memorable name (instead of a random one)
     container_name: gemini-agent
 
+    # Set up environment variables from .env
+    environment:
+      - AGENTMAIL_API_KEY=${AGENTMAIL}
+
     # "unless-stopped" means the container will restart automatically
     # if Docker restarts (e.g., after a reboot), but NOT if you
     # manually stop it with `docker compose down`.
