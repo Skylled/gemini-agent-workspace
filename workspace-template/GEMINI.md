@@ -27,6 +27,8 @@ folder. Use it to maintain continuity between sessions:
 - **Format entries** with a date and a concise summary.
 - **Use the summaries** to know which memory files to check for potentially
   relevant details to a given query or task.
+- **Do not** read every memory file. Only read individual memory files when
+  past discussion is relevant to the current task.
   
 
 ## Workspace Structure
